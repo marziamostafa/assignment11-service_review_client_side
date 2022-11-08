@@ -1,18 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
-const Login = () => {
+const SignUp = () => {
     return (
-        <div className="hero min-h-max my-15 bg-red-100">
+        <div className="hero w-full my-15 bg-red-100">
             <div className="hero-content grid gap-20 md:grid-cols-2 flex-col lg:flex-row">
                 <div className="text-center lg:text-left">
 
                     <img className='' src="https://img.freepik.com/free-vector/hand-drawn-fast-food-background_52683-21988.jpg?size=626&ext=jpg" alt="" />
                 </div>
                 <div className="card flex-shrink-0 w-full shadow-2xl bg-base-100 py-20">
-                    <h1 className="text-5xl font-bold text-center">Login now!</h1>
+                    <h1 className="text-5xl font-bold text-center">Sign Up</h1>
                     <form className="card-body">
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Name</span>
+                            </label>
+                            <input name='name' type="text" placeholder="Your Name" className="input input-bordered" />
+                        </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
@@ -30,14 +35,14 @@ const Login = () => {
                         </div>
                         <div className="form-control mt-6">
 
-                            <input className="btn btn-primary" type="submit" value="Login" />
+                            <input className="btn btn-primary" type="submit" value="Sign Up" />
                         </div>
                     </form>
-                    <p className='text-center'>New to Foodie? <Link className='text-orange-600 font-bold' to='/signup'>Sign Up</Link></p>
+                    <p className='text-center'>Already have an account? <Link className='text-orange-600 font-bold' to='/login'>Log In</Link></p>
                 </div>
             </div>
         </div>
     );
 };
 
-export default Login;
+export default SignUp;
