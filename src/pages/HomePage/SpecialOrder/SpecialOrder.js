@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPinIcon, PhoneIcon } from '@heroicons/react/24/solid'
+import { PhoneIcon } from '@heroicons/react/24/solid'
 
 const SpecialOrder = () => {
     return (
