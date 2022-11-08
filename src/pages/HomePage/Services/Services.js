@@ -11,9 +11,9 @@ const Services = () => {
     }, [])
 
     return (
-        <div>
+        <div className='my-16'>
             <div className='text-center'>
-                <p className="text-5xl text-red-600 font-semibold">Manue Bar</p>
+                <p className="text-5xl text-red-600 font-semibold ">Manue Bar</p>
                 <p className='text-sky-800 text-3xl'>Hey Foodie! Choose your favourites from here.</p>
 
             </div>
