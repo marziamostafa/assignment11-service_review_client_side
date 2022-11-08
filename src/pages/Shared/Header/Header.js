@@ -6,6 +6,7 @@ const Header = () => {
 
     const manueItems = <>
         <li className='text-xl font-semibold'><Link to='/'>Home</Link></li>
+        <li className='text-xl font-semibold'><Link to='/blog'>Blog</Link></li>
     </>
     return (
         <div className="navbar bg-base-100">
