@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import ServiceCard from './ServiceCard';
+import ServiceCard from '../HomePage/Services/ServiceCard';
 
-const Services = () => {
+const AllServices = () => {
+
     const [services, setServices] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('http://localhost:5000/allservices')
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])
@@ -27,11 +27,9 @@ const Services = () => {
                     ></ServiceCard>)
                 }
             </div>
-            <div className="card-actions justify-center container">
-                <button className="btn btn-outline"><Link to='/allservices'>View All</Link></button>
-            </div>
+
         </div>
     );
 };
 
-export default Services;
+export default AllServices;

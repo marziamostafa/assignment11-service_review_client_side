@@ -30,7 +30,7 @@ const Login = () => {
                 console.log(currentUser);
 
                 //get jwt token
-                fetch('', {
+                fetch('http://localhost:5000/services', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
