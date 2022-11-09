@@ -1,12 +1,30 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo/logo.jpg'
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext)
+
+    const handleSignOut = () => {
+        logOut()
+            .then()
+            .catch()
+    }
 
     const manueItems = <>
         <li className='text-xl font-semibold'><Link to='/'>Home</Link></li>
-        <li className='text-xl font-semibold'><Link to='/blog'>Blog</Link></li>
+        {
+            user?.email ?
+                <>
+                    <li className='text-xl font-semibold'><Link to='/myreviews'>My Reviews</Link></li>
+
+                    <li className='text-xl font-semibold'><Link to='/blog'>Blog</Link></li>
+                </>
+                :
+                <li className='text-xl font-semibold'><Link to='/blog'>Blog</Link></li>
+        }
+
     </>
     return (
         <div className="navbar bg-base-100">
@@ -31,7 +49,17 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link className='btn btn-outline btn-ghost text-xl' to='/login'>Log In</Link>
+
+                {
+                    user?.email ?
+                        <>
+                            <Link onClick={handleSignOut} className='btn btn-outline btn-ghost text-xl'>Sign out</Link>
+                        </>
+                        :
+                        <Link className='btn btn-outline btn-ghost text-xl' to='/login'>Log In</Link>
+                }
+
+                {/* <Link className='btn btn-outline btn-ghost text-xl' to='/login'>Log In</Link> */}
             </div>
         </div>
     );

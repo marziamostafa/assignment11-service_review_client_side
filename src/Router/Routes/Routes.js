@@ -6,6 +6,7 @@ import Login from "../../pages/Login/Login";
 import ServiceDetail from "../../pages/ServiceDetail/ServiceDetail";
 import Blog from "../../pages/Shared/Blog/Blog";
 import SignUp from "../../pages/SignUp/SignUp";
+import MyReviews from '../../pages/MyReviews/MyReviews';
 
 
 const router = createBrowserRouter([
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
                     console.log(params.id)
                     return fetch(`http://localhost:5000/allservices/${params.id}`)
                 }
+            },
+            {
+                path: '/myreviews',
+                element: <MyReviews></MyReviews>
             },
         ]
     }
