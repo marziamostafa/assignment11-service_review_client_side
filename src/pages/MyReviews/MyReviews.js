@@ -90,19 +90,30 @@ const MyReviews = () => {
                     <tbody>
 
                         {
+                            reviews.length === 0 ?
+                                <>
+
+                                    <div className='flex justify-center'>
+                                        <h1 className='text-4xl font-bold'>No reviews were added</h1>
+                                    </div>
+                                </>
+                                :
+                                < div >
                             reviews?.map(review => <ReviewRow
-                                key={review._id}
-                                review={review}
-                                handleDelete={handleDelete}
-                            // handleStatus={handleStatus}
-                            ></ReviewRow>)
+                                        key={review._id}
+                                        review={review}
+                                        handleDelete={handleDelete}
+                                    // handleStatus={handleStatus}
+                                    ></ReviewRow>)
+                                </div>
+
                         }
 
                     </tbody>
 
                 </table>
             </div>
-        </div>
+        </div >
     )
 };
 

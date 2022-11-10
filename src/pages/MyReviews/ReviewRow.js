@@ -1,11 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { UserCircleIcon } from '@heroicons/react/24/solid'
-import { useLoaderData } from 'react-router-dom';
 
 const ReviewRow = ({ review, handleDelete, }) => {
-
-
     const { _id, serviceName, customer, price, service, phone, status, message, image, email, } = review
     const [reviewService, setReviewService] = useState({})
 
@@ -31,9 +28,8 @@ const ReviewRow = ({ review, handleDelete, }) => {
 
         console.log(message)
 
-
-
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`, {
+        const newMsg = message;
+        fetch(`https://b6a11-service-review-server-side-marziamostafa-marziamostafa.vercel.app/reviews${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
@@ -44,7 +40,6 @@ const ReviewRow = ({ review, handleDelete, }) => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-
                 // if (data.acknowledged) {
                 //     alert('A new Service Added successfully')
                 //     form.reset();
@@ -56,16 +51,8 @@ const ReviewRow = ({ review, handleDelete, }) => {
     const handlechange = event => {
         const msg = event.target.value;
         console.log(msg)
-
-        const arr = [...review]
-        const newMsg = message;
-
-
-        arr.message = newMsg
-
-
-        setUpmsg(arr)
-
+        const upmsg = { ...review }
+        upmsg.message = upmsg
     }
     return (
         <tr>
@@ -117,10 +104,10 @@ const ReviewRow = ({ review, handleDelete, }) => {
                     <div className="modal-box">
                         <form onSubmit={handleStatus} >
                             <textarea onChange={handlechange} name='message' className="textarea textarea-bordered h-24 w-full my-4" placeholder="Your message"></textarea>
-
                             <div className="modal-action">
-                                <input htmlFor="my-modal" className='btn btn-active text-center' type="submit" value="Submit Review" />
+                                <label htmlFor="my-modal" type="submit" className="btn">Submit</label>
                             </div>
+
                         </form>
 
                     </div>

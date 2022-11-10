@@ -116,16 +116,3 @@ const AddService = () => {
 
 export default AddService;
 
-// const handlechange = event => {
-//     const msg = event.target.value;
-//     console.log(msg)
-//     const arr = [...review]
-//     const newMsg = msg;
-
-
-//     arr.message = newMsg
-
-
-//     setUpmsg(arr)
-
-// }
