@@ -10,24 +10,27 @@ const ServiceDetail = () => {
     const detail = useLoaderData();
     const { _id, img, title, description, ingredients, price
     } = detail
-    console.log(detail)
+    // console.log(detail)
 
     const handleServiceReview = event => {
         event.preventDefault();
 
         const form = event.target;
         const name = `${form.firstName.value} ${form.lastName.value}`
-        const img = user?.photoURL || <UserCircleIcon></UserCircleIcon>;
+        // const img = `${user ? user.photoURL : <UserCircleIcon></UserCircleIcon>}`;
+        const img = user?.photoURL
         const email = user?.email || 'unregistered';
         const phone = form.phone.value;
         const message = form.message.value;
+        console.log(img)
 
-        const order = {
+        const review = {
             service: _id,
             serviceName: title,
-            image: img,
+            img,
             customer: name,
             phone,
+            price,
             email,
             message
         }
@@ -37,7 +40,7 @@ const ServiceDetail = () => {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(order)
+            body: JSON.stringify(review)
         })
             .then(res => res.json())
             .then(data => {
@@ -106,8 +109,6 @@ const ServiceDetail = () => {
                                 </>
                         }
 
-                        {/* 
-                        <input className='btn btn-active text-center' type="submit" value="Submit Review" /> */}
                     </div>
 
                 </form>
