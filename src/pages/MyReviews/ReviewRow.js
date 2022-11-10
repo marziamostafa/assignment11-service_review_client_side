@@ -54,67 +54,72 @@ const ReviewRow = ({ review, handleDelete, }) => {
         const upmsg = { ...review }
         upmsg.message = upmsg
     }
-    return (
-        <tr>
-            <th>
-                <label>
-                    <button onClick={() => handleDelete(_id)} className='btn btn-ghost'>X</button>
-                </label>
-            </th>
-            <td>
-                <div className="flex items-center space-x-3">
-                    <div className="avatar">
-                        <div className="rounded w-20 h-24">
-                            {
-                                reviewService?.email ?
-                                    <img src={reviewService?.img} alt="Avatar Tailwind CSS Component" />
-                                    :
-                                    <UserCircleIcon></UserCircleIcon>
-                            }
+    if (review.length !== 0) {
+        return (
+            <tr>
+                <th>
+                    <label>
+                        <button onClick={() => handleDelete(_id)} className='btn btn-ghost'>X</button>
+                    </label>
+                </th>
+                <td>
+                    <div className="flex items-center space-x-3">
+                        <div className="avatar">
+                            <div className="rounded w-20 h-24">
+                                {
+                                    reviewService?.email ?
+                                        <img src={reviewService?.img} alt="Avatar Tailwind CSS Component" />
+                                        :
+                                        <UserCircleIcon></UserCircleIcon>
+                                }
+                            </div>
+                        </div>
+                        <div>
+                            <div className="font-bold">{customer}</div>
+                            <div className="text-sm opacity-50">{phone}</div>
                         </div>
                     </div>
-                    <div>
-                        <div className="font-bold">{customer}</div>
-                        <div className="text-sm opacity-50">{phone}</div>
-                    </div>
-                </div>
-            </td>
-            <td>
-                {email}
+                </td>
+                <td>
+                    {email}
 
-            </td>
+                </td>
 
-            <td>
-                {serviceName}
-                <br />
-                <span className="badge badge-ghost badge-sm">${price}</span>
-            </td>
-            <td>{message}</td>
-            <th>
-                {/* <button onClick={() => handleStatus(_id)} className="btn btn-ghost btn-xs">
+                <td>
+                    {serviceName}
+                    <br />
+                    <span className="badge badge-ghost badge-sm">${price}</span>
+                </td>
+                <td>{message}</td>
+                <th>
+                    {/* <button onClick={() => handleStatus(_id)} className="btn btn-ghost btn-xs">
                     {
                         status ?
                             status : 'Update'
                     }
                 </button> */}
 
-                <label htmlFor="my-modal" className="btn btn-ghost btn-xs">Edit</label>
-                <input type="checkbox" id="my-modal" className="modal-toggle" />
-                <div className="modal">
-                    <div className="modal-box">
-                        <form onSubmit={handleStatus} >
-                            <textarea onChange={handlechange} name='message' className="textarea textarea-bordered h-24 w-full my-4" placeholder="Your message"></textarea>
-                            <div className="modal-action">
-                                <label htmlFor="my-modal" type="submit" className="btn">Submit</label>
-                            </div>
+                    <label htmlFor="my-modal" className="btn btn-ghost btn-xs">Edit</label>
+                    <input type="checkbox" id="my-modal" className="modal-toggle" />
+                    <div className="modal">
+                        <div className="modal-box">
+                            <form onSubmit={handleStatus} >
+                                <textarea onChange={handlechange} name='message' className="textarea textarea-bordered h-24 w-full my-4" placeholder="Your message"></textarea>
+                                <div className="modal-action">
+                                    <label htmlFor="my-modal" type="submit" className="btn">Submit</label>
+                                </div>
 
-                        </form>
+                            </form>
 
+                        </div>
                     </div>
-                </div>
-            </th>
-        </tr>
-    )
+                </th>
+            </tr>
+        )
+    }
+    else {
+        return <div>No review</div>
+    }
 };
 
 export default ReviewRow;
