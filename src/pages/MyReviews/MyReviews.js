@@ -19,7 +19,7 @@ const MyReviews = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure you want to delete?')
         if (proceed) {
-            fetch(`http://localhost:5000/review/${id}`, {
+            fetch(`http://localhost:5000/reviews/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -64,9 +64,7 @@ const MyReviews = () => {
                     <thead>
                         <tr>
                             <th>
-                                <label>
-                                    <input type="checkbox" className="checkbox" />
-                                </label>
+                                Delete
                             </th>
                             <th className='text-center'>Name</th>
                             <th>Email</th>
