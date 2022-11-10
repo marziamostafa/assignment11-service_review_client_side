@@ -13,7 +13,7 @@ const MyReviews = () => {
         message: ""
     }
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`, {
+        fetch(`https://b6a11-service-review-server-side-marziamostafa.vercel.app/reviews?email=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('foodieToken')}`
             }
@@ -28,7 +28,7 @@ const MyReviews = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure you want to delete?')
         if (proceed) {
-            fetch(`http://localhost:5000/reviews/${id}`, {
+            fetch(`https://b6a11-service-review-server-side-marziamostafa.vercel.app/reviews/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -68,8 +68,9 @@ const MyReviews = () => {
             })
     }
 
-    return (
-        <div>
+    if (reviews.length !== 0) {
+        return <div>
+
             <h2>You have {reviews.length} Reviews</h2>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
@@ -102,7 +103,14 @@ const MyReviews = () => {
                 </table>
             </div>
         </div>
-    )
+    }
+
+    else {
+        return <div>
+            <h1>no reviews were added</h1>
+        </div>
+    }
+
 };
 
 export default MyReviews;

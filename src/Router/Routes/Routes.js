@@ -7,6 +7,9 @@ import ServiceDetail from "../../pages/ServiceDetail/ServiceDetail";
 import Blog from "../../pages/Shared/Blog/Blog";
 import SignUp from "../../pages/SignUp/SignUp";
 import MyReviews from '../../pages/MyReviews/MyReviews';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import AddService from "../../pages/Shared/AddService/AddService";
+import Error from "../../pages/Error/Error";
 
 
 const router = createBrowserRouter([
@@ -39,19 +42,23 @@ const router = createBrowserRouter([
                 element: <ServiceDetail></ServiceDetail>,
                 loader: async ({ params }) => {
                     console.log(params.id)
-                    return fetch(`http://localhost:5000/allservices/${params.id}`)
+                    return fetch(`https://b6a11-service-review-server-side-marziamostafa.vercel.app/allservices/${params.id}`)
                 }
             },
             {
                 path: '/myreviews',
-                element: <MyReviews></MyReviews>,
-                // loader: async ({ params }) => {
-                //     console.log(params.id)
-                //     return fetch(`http://localhost:5000/reviews/${params.id}`)
-                // }
+                element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>,
+
+            },
+            {
+                path: '/addservice',
+                element: <AddService></AddService>,
+
             },
         ]
-    }
+    },
+
+    { path: '*', element: <Error></Error> },
 ])
 
 export default router;

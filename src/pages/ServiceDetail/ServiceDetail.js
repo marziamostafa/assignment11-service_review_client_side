@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { UserCircleIcon } from '@heroicons/react/24/solid'
+import PrivateRoute from '../../Router/PrivateRoute/PrivateRoute';
 
 const ServiceDetail = () => {
     const { user } = useContext(AuthContext)
@@ -35,7 +36,7 @@ const ServiceDetail = () => {
             message
         }
 
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://b6a11-service-review-server-side-marziamostafa.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -83,6 +84,7 @@ const ServiceDetail = () => {
                 </div>
             </div>
 
+
             <div className='my-16 '>
                 <form onSubmit={handleServiceReview}>
                     <h2 className="text-4xl card-actions justify-center container">Add Review for: {title}</h2>
@@ -114,6 +116,7 @@ const ServiceDetail = () => {
 
                 </form>
             </div>
+
         </div>
     );
 };

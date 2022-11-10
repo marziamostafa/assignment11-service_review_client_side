@@ -5,6 +5,7 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
 
+
     const { login } = useContext(AuthContext);
 
     const location = useLocation();
@@ -30,7 +31,7 @@ const Login = () => {
                 console.log(currentUser);
 
                 //get jwt token
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://b6a11-service-review-server-side-marziamostafa.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -41,6 +42,7 @@ const Login = () => {
                     .then(data => {
                         console.log(data)
                         localStorage.setItem('foodieToken', data.token)
+                        form.reset();
                         navigate(from, { replace: true })
                     })
 
@@ -90,28 +92,3 @@ const Login = () => {
 
 export default Login;
 
-//get jwt token
-// fetch('http://localhost:5000/jwt', {
-//     method: 'POST',
-//     headers: {
-//         'content-type': 'application/json'
-//     },
-//     body: JSON.stringify(currentUser)
-// })
-//     .then(res => res.json())
-//     .then(data => {
-
-//         console.log(data)
-//         //local storage
-//         localStorage.setItem('foodieToken', data.token)
-//     })
-// form.reset();
-// navigate(from, { replace: true })
-
-// })
-// .catch(error => {
-// console.error(error);
-// })
-
-
-// }
