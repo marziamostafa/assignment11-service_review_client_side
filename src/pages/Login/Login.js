@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 
 
 const Login = () => {
+    useTitle('Login')
 
-
-    const { login } = useContext(AuthContext);
+    const { login, googleLogin } = useContext(AuthContext);
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -42,15 +43,29 @@ const Login = () => {
                     .then(data => {
                         console.log(data)
                         localStorage.setItem('foodieToken', data.token)
-                        form.reset();
-                        navigate(from, { replace: true })
+
                     })
+                form.reset();
+                navigate(from, { replace: true })
 
             })
             .catch(error => {
                 console.error(error);
             })
 
+
+    }
+
+    const handleGoogleSignIn = () => {
+
+        googleLogin()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.error(error);
+            })
 
     }
     return (
@@ -84,7 +99,12 @@ const Login = () => {
                         </div>
                     </form>
                     <p className='text-center'>New to Foodie? <Link className='text-orange-600 font-bold' to='/signup'>Sign Up</Link></p>
+
+                    <div className="card-actions justify-center">
+                        <button onClick={handleGoogleSignIn} className='mb-2 btn'> Log in with Google</button>
+                    </div>
                 </div>
+
             </div>
         </div>
     );

@@ -11,7 +11,7 @@ const ServiceDetail = () => {
     const detail = useLoaderData();
     const { _id, img, title, description, ingredients, price
     } = detail
-    // console.log(detail)
+    console.log(detail)
 
     const handleServiceReview = event => {
         event.preventDefault();
@@ -36,7 +36,7 @@ const ServiceDetail = () => {
             message
         }
 
-        fetch('https://b6a11-service-review-server-side-marziamostafa.vercel.app/reviews', {
+        fetch('https://b6a11-service-review.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

@@ -10,6 +10,7 @@ import MyReviews from '../../pages/MyReviews/MyReviews';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import AddService from "../../pages/Shared/AddService/AddService";
 import Error from "../../pages/Error/Error";
+import ReviewRow from "../../pages/MyReviews/ReviewRow";
 
 
 const router = createBrowserRouter([
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
                 element: <ServiceDetail></ServiceDetail>,
                 loader: async ({ params }) => {
                     console.log(params.id)
-                    return fetch(`https://b6a11-service-review-server-side-marziamostafa.vercel.app/allservices/${params.id}`)
+                    return fetch(`https://b6a11-service-review.vercel.app/allservices/${params.id}`)
                 }
             },
             {
@@ -53,6 +54,16 @@ const router = createBrowserRouter([
             {
                 path: '/addservice',
                 element: <AddService></AddService>,
+
+            },
+            {
+                path: '/myreviews/:id',
+                loader: async ({ params }) => {
+                    console.log(params.id)
+                    return fetch(`https://b6a11-service-review.vercel.app/reviews/${params.id}`)
+                },
+                element: <ReviewRow></ReviewRow>
+
 
             },
         ]

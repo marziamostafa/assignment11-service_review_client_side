@@ -17,13 +17,12 @@ const Banner = () => {
 
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-24 right-5 top-1/4">
                     <h1 className='text-6xl font-bold text-white'>
-                        Affordable <br />
-                        Price for Car <br />
-                        Servicing
+                        Get food <br />
+                        at home
                     </h1>
                 </div>
                 <div className="absolute flex justify-between w-2/5 transform -translate-y-1/2 left-24 right-5 top-1/2">
-                    <p className='text-white text-xl'>There are many variations of passages of  available, but the majority have suffered alteration in some form</p>
+                    <p className='text-white text-xl'>We are proving you the opportunity to get any home made food at your home. So order now!</p>
                 </div>
 
                 <div className="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -37,13 +36,12 @@ const Banner = () => {
 
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-24 right-5 top-1/4">
                     <h1 className='text-6xl font-bold text-white'>
-                        Affordable <br />
-                        Price for Car <br />
-                        Servicing
+                        Get food <br />
+                        at home
                     </h1>
                 </div>
                 <div className="absolute flex justify-between w-2/5 transform -translate-y-1/2 left-24 right-5 top-1/2">
-                    <p className='text-white text-xl'>There are many variations of passages of  available, but the majority have suffered alteration in some form</p>
+                    <p className='text-white text-xl'>We are proving you the opportunity to get any home made food at your home. So order now!</p>
                 </div>
 
                 <div className="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -56,13 +54,12 @@ const Banner = () => {
 
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-24 right-5 top-1/4">
                     <h1 className='text-6xl font-bold text-white'>
-                        Affordable <br />
-                        Price for Car <br />
-                        Servicing
+                        Get food <br />
+                        at home
                     </h1>
                 </div>
                 <div className="absolute flex justify-between w-2/5 transform -translate-y-1/2 left-24 right-5 top-1/2">
-                    <p className='text-white text-xl'>There are many variations of passages of  available, but the majority have suffered alteration in some form</p>
+                    <p className='text-white text-xl'>We are proving you the opportunity to get any home made food at your home. So order now!</p>
                 </div>
 
                 <div className="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -77,13 +74,12 @@ const Banner = () => {
 
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-24 right-5 top-1/4">
                     <h1 className='text-6xl font-bold text-white'>
-                        Affordable <br />
-                        Price for Car <br />
-                        Servicing
+                        Get food <br />
+                        at home
                     </h1>
                 </div>
                 <div className="absolute flex justify-between w-2/5 transform -translate-y-1/2 left-24 right-5 top-1/2">
-                    <p className='text-white text-xl'>There are many variations of passages of  available, but the majority have suffered alteration in some form</p>
+                    <p className='text-white text-xl'>We are proving you the opportunity to get any home made food at your home. So order now!</p>
                 </div>
 
                 <div className="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 top-1/2">

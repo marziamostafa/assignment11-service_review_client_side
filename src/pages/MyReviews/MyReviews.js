@@ -1,19 +1,20 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 import ReviewRow from './ReviewRow';
 
 const MyReviews = () => {
 
     const { user } = useContext(AuthContext)
     const [reviews, setReviews] = useState([])
-
+    useTitle('My Reviews')
 
 
     const review = {
         message: ""
     }
     useEffect(() => {
-        fetch(`https://b6a11-service-review-server-side-marziamostafa.vercel.app/reviews?email=${user?.email}`, {
+        fetch(`https://b6a11-service-review.vercel.app/reviews?email=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('foodieToken')}`
             }
@@ -28,7 +29,7 @@ const MyReviews = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure you want to delete?')
         if (proceed) {
-            fetch(`https://b6a11-service-review-server-side-marziamostafa.vercel.app/reviews/${id}`, {
+            fetch(`https://b6a11-service-review.vercel.app/reviews/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -43,34 +44,33 @@ const MyReviews = () => {
         }
     }
 
-    const handleStatus = (id) => {
+    // const handleStatus = (id) => {
 
-        console.log(review)
-        fetch(`http://localhost:5000/reviews/${id}`, {
-            method: 'PATCH',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({ status: 'Approved' })
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if (data.modifiedCount > 0) {
-                    const remaining = reviews.filter(rev => rev._id !== id)
-                    const approving = reviews.find(rev => rev._id === id)
-                    approving.status = {};
-                    approving.status = 'Approved';
+    //     console.log(id)
+    //     fetch(`https://b6a11-service-review.vercel.app/${id}`, {
+    //         method: 'PATCH',
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify({ status: 'Approved' })
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data)
+    //             if (data.modifiedCount > 0) {
+    //                 const remaining = reviews.filter(rev => rev._id !== id)
+    //                 const approving = reviews.find(rev => rev._id === id)
+    //                 approving.status = {};
+    //                 approving.status = 'Approved';
 
-                    const newOrders = [approving, ...remaining];
-                    setReviews(newOrders);
-                }
-            })
-    }
+    //                 const newOrders = [approving, ...remaining];
+    //                 setReviews(newOrders);
+    //             }
+    //         })
+    // }
 
-    if (reviews.length !== 0) {
-        return <div>
-
+    return (
+        <div>
             <h2>You have {reviews.length} Reviews</h2>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
@@ -94,7 +94,7 @@ const MyReviews = () => {
                                 key={review._id}
                                 review={review}
                                 handleDelete={handleDelete}
-                                handleStatus={handleStatus}
+                            // handleStatus={handleStatus}
                             ></ReviewRow>)
                         }
 
@@ -103,14 +103,7 @@ const MyReviews = () => {
                 </table>
             </div>
         </div>
-    }
-
-    else {
-        return <div>
-            <h1>no reviews were added</h1>
-        </div>
-    }
-
+    )
 };
 
 export default MyReviews;

@@ -6,7 +6,7 @@ const AllServices = () => {
     const [services, setServices] = useState([])
 
     useEffect(() => {
-        fetch('https://b6a11-service-review-server-side-marziamostafa.vercel.app/allservices')
+        fetch('https://b6a11-service-review.vercel.app/allservices')
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])
