@@ -3,9 +3,15 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import ReviewRow from './ReviewRow';
 
 const MyReviews = () => {
+
     const { user } = useContext(AuthContext)
     const [reviews, setReviews] = useState([])
 
+
+
+    const review = {
+        message: ""
+    }
     useEffect(() => {
         fetch(`http://localhost:5000/reviews?email=${user?.email}`, {
             headers: {
@@ -15,6 +21,9 @@ const MyReviews = () => {
             .then(res => res.json())
             .then(data => setReviews(data));
     }, [user?.email])
+
+
+
 
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure you want to delete?')
@@ -34,7 +43,9 @@ const MyReviews = () => {
         }
     }
 
-    const handleStatus = id => {
+    const handleStatus = (id) => {
+
+        console.log(review)
         fetch(`http://localhost:5000/reviews/${id}`, {
             method: 'PATCH',
             headers: {
@@ -48,6 +59,7 @@ const MyReviews = () => {
                 if (data.modifiedCount > 0) {
                     const remaining = reviews.filter(rev => rev._id !== id)
                     const approving = reviews.find(rev => rev._id === id)
+                    approving.status = {};
                     approving.status = 'Approved';
 
                     const newOrders = [approving, ...remaining];
@@ -55,6 +67,7 @@ const MyReviews = () => {
                 }
             })
     }
+
     return (
         <div>
             <h2>You have {reviews.length} Reviews</h2>
@@ -76,7 +89,7 @@ const MyReviews = () => {
                     <tbody>
 
                         {
-                            reviews.map(review => <ReviewRow
+                            reviews?.map(review => <ReviewRow
                                 key={review._id}
                                 review={review}
                                 handleDelete={handleDelete}

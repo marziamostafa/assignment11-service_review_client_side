@@ -45,10 +45,10 @@ const router = createBrowserRouter([
             {
                 path: '/myreviews',
                 element: <MyReviews></MyReviews>,
-                loader: async ({ params }) => {
-                    console.log(params.id)
-                    return fetch(`http://localhost:5000/reviews/${params.id}`)
-                }
+                // loader: async ({ params }) => {
+                //     console.log(params.id)
+                //     return fetch(`http://localhost:5000/reviews/${params.id}`)
+                // }
             },
         ]
     }
